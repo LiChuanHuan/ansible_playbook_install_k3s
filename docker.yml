@@ -1,0 +1,9 @@
+---
+- name: Install Docker Service
+  hosts: local
+  become: yes
+  become_method: sudo
+  pre_tasks:
+    - shell: echo 'start install docker'
+  roles:
+    - docker
