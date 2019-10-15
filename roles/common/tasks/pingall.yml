@@ -1,0 +1,10 @@
+cat pingall.yml
+---
+- hosts: "{{ variable_host | default('all') }}"
+  tasks:
+    - name: Test connectivity
+      ping:
+      register: result
+    - name: Print result
+      debug:
+        msg: "{{ result }}"

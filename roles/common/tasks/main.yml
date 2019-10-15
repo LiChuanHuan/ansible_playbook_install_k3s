@@ -1,0 +1,5 @@
+
+---
+# tasks file for common
+- include: pingall.yml
+- include: update_apt.yml

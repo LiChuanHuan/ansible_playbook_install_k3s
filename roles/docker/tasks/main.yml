@@ -9,7 +9,6 @@
     state: present
 - name: Install Docker packages
   apt:
-    update_cache: yes
     name: ['docker-ce','docker-ce-cli','containerd.io']
     state: present
 
