@@ -1,0 +1,9 @@
+---
+- name: run common command
+  hosts: "{{ env_host | default('all') }}"
+  become: yes
+  become_method: sudo
+  pre_tasks:
+    - shell: echo "run role common"
+  roles:
+    - common
