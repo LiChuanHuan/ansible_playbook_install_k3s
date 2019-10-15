@@ -1,6 +1,6 @@
 ---
 - name: Install Docker Service
-  hosts: local
+  hosts: "{{ env_host | default('all') }}"
   become: yes
   become_method: sudo
   pre_tasks:

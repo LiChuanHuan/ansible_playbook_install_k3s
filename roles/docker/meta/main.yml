@@ -1,0 +1,15 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: LiChuanHuan@github
+  description: Installs docker-ce
+  company: "LiChuanHuan@github"
+  license: MIT
+  categories:
+    - system
+  platforms:
+    - name: Ubuntu
+  dependencies:
+    - { role: common}
