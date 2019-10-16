@@ -13,11 +13,10 @@
 
 - name: Install Docker-compose
   become: yes
-  #  shell: curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   get_url:
-    url: "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-{{ansible_system}}-{{ansible_architecture}}"
-    dest: /usr/local/bin/docker-compose
-    mode: +x
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+    dest: "{{ docker_compose_path }}"
+    mode: 0755
 
 - name: grant user access to Docker
   user: "name={{ ansible_ssh_user }} groups=docker append=yes"
