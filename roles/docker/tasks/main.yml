@@ -5,21 +5,28 @@
   ignore_errors: True
 
 - name: check docker is installed
-  fail: msg="docker is installed"
-  when: result|success
+  shell: echo " docker is installed "
+  when: result is succeeded
 
 - name: add docker gpg key
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+  when: result is failed
 
 - name: add docker apt repository
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
     state: present
+  when: result is failed
+
 - name: Install Docker packages
   apt:
     name: ['docker-ce','docker-ce-cli','containerd.io']
     state: present
+  when: result is failed
 
+- name: grant user access to Docker
+  user: "name={{ ansible_ssh_user }} groups=docker append=yes"
+  when: result is failed
 
 - name: echo docker compose version
   shell: docker-compose -v
@@ -27,8 +34,8 @@
   ignore_errors: True
 
 - name: check docker compose is installed
-  fail: msg="docker-compose is installed"
-  when: result|success
+  shell: echo "docker-compose is installed"
+  when: result is succeeded
 
 - name: Install Docker-compose
   become: yes
@@ -36,6 +43,5 @@
     url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
     dest: "{{ docker_compose_path }}"
     mode: 0755
+  when: result is failed
 
-- name: grant user access to Docker
-  user: "name={{ ansible_ssh_user }} groups=docker append=yes"
