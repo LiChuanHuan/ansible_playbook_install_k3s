@@ -1,4 +1,13 @@
 ---
+- name: echo docker version
+  shell: docker -v
+  register: result
+  ignore_errors: True
+
+- name: check docker is installed
+  fail: msg="docker is installed"
+  when: result|success
+
 - name: add docker gpg key
   apt_key: url=https://download.docker.com/linux/ubuntu/gpg
 
@@ -10,6 +19,16 @@
   apt:
     name: ['docker-ce','docker-ce-cli','containerd.io']
     state: present
+
+
+- name: echo docker compose version
+  shell: docker-compose -v
+  register: result
+  ignore_errors: True
+
+- name: check docker compose is installed
+  fail: msg="docker-compose is installed"
+  when: result|success
 
 - name: Install Docker-compose
   become: yes
