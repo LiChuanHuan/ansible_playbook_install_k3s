@@ -1,0 +1,4 @@
+---
+- name: install rancher server
+  shell: docker run -d -v /opt/data/dokcer/rancher/:/var/lib/rancher/ --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:stable
+
