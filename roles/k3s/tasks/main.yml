@@ -1,6 +1,8 @@
 ---
 - name: install k3s single node
   shell: 'curl -sfL https://get.k3s.io | sh -'
+  args:
+    warn: false
   register: out
 
 - debug: msg="{{out.stdout_lines}}"
