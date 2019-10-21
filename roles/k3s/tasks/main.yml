@@ -1,4 +1,4 @@
 ---
 - name: install k3s single node
-  shell: sh < curl -sfL https://get.k3s.io
+  shell: curl -sfL https://get.k3s.io | sh
 
