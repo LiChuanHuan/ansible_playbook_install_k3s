@@ -5,9 +5,10 @@
   ignore_errors: True
 
 - name: install rancher server
-  shell: docker run -d --name rancher-server -v /opt/data/dokcer/rancher/:/var/lib/rancher/ --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:stable
+  shell: docker run -d --name {{ rancher_container_name }} -v /opt/data/dokcer/rancher/:/var/lib/rancher/ --restart=unless-stopped -p {{ rancher_http_port }}:80 -p {{ rancher_https_port }}:443 rancher/rancher:stable
   when: result is failed
 
 - name: show rancher server already install message
-  shell: echo "rancher server already install"
+  debug:
+    msg: rancher server already install!!
   when: result is succeeded
