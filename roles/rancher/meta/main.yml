@@ -4,7 +4,7 @@ dependencies: []
 
 galaxy_info:
   author: LiChuanHuan@github
-  description: Installs docker-ce
+  description: Installs rancher
   company: "LiChuanHuan@github"
   license: MIT
   categories:
@@ -12,4 +12,4 @@ galaxy_info:
   platforms:
     - name: Ubuntu
   dependencies:
-    - { role: common}
+    - { role: docker}
