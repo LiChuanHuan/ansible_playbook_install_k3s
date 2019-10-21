@@ -1,0 +1,9 @@
+---
+- name: Install k3s single node
+  hosts: "{{ env_host | default('local') }}"
+  become: yes
+  become_method: sudo
+  pre_tasks:
+    - shell: echo 'start install k3s single node!!'
+  roles:
+    - k3s

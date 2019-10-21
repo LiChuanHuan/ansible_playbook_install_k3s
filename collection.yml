@@ -2,4 +2,4 @@
 # include run-common.yml
 - include: install-docker.yml
 - include: install-rancher-server.yml
-#- include: install-k3s.yml
+- include: install-k3s.yml
