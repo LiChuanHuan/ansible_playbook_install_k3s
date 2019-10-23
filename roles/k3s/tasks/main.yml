@@ -14,19 +14,25 @@
 - debug: msg="{{out.stdout_lines}}"
   when: result is failed
 
+- name: check k3s use docker container
+  shell: kubectl get no -o wide | grep "docker"
+  register: result
+
 - name: make k3s use docker container
   lineinfile:
     path: /etc/systemd/system/multi-user.target.wants/k3s.service
     state: present
     regexp: 'server'
     line: '    server --docker \'
+  when: result is failed
 
 - name: daemon-reload
   shell: 'systemctl daemon-reload'
+  when: result is failed
 
 - name: restart k3s
   service:
     name: k3s
     state: restarted
-
+  when: result is failed
 
