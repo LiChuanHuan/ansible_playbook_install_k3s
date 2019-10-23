@@ -1,5 +1,0 @@
----
-# rancher info
-rancher_container_name: rancher-server
-rancher_http_port: "80"
-rancher_https_port: "443"
