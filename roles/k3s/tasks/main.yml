@@ -1,6 +1,6 @@
 ---
 - name: check k3s install
-  shell: k3s kubectl get node ps
+  shell: k3s kubectl get node
   register: result
   ignore_errors: True
 
