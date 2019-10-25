@@ -1,11 +1,11 @@
 ---
 - name: check k3s install
-  shell: k3s kubectl get node
+  shell: k3s -v | grep {{k3s_version}}
   register: result
   ignore_errors: True
 
 - name: install k3s single node
-  shell: 'curl -sfL https://get.k3s.io | sh -'
+  shell: curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION={{k3s_version}} sh -
   args:
     warn: false
   register: out
