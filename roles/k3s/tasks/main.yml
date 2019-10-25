@@ -17,6 +17,7 @@
 - name: check k3s use docker container
   shell: kubectl get no -o wide | grep "docker"
   register: result
+  ignore_errors: True
 
 - name: make k3s use docker container
   lineinfile:
