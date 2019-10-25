@@ -4,7 +4,7 @@ this ansible playbook will install docker and k3s on the ubuntu, and make k3s us
 
 ## step1: install docker&k3s
 ```
-ansible-playbook collectioin.yml --extra-vars "k3s_version=v0.10.0"
+ansible-playbook collection.yml --extra-vars "k3s_version=v0.10.0"
 ```
 
 ## step2: check k3s is running
